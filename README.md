@@ -31,7 +31,7 @@ It basically creates 3 containers, one for development, one for debugging and on
 8. Open .vscode/tasks.json
 	- Replace both `"${workspaceRoot}/src/[ENTER APP NAME HERE].csproj"` with your app's name "App.csproj" example.
 
-That's it! Now go into ./src/Controllers And set a breakpoint in one of the actions you want to hit, and press F5. The debugger should spin put and let you debug inside of Docker.
+That's it! Now go into ./src/Controllers And set a breakpoint in one of the actions you want to hit, and press F5. The debugger should spin put and let you debug inside of Docker, go to http://localhost:5050 and activate the code path for your breakpoint!
 
 
 
