@@ -18,18 +18,18 @@ It basically creates 3 containers, one for development, one for debugging and on
 1. Clone the repository
 2. Open ./src folder in your terminal
 3. Create a new ASP.NET Core app inside ./src run `dotnet new mvc -n App` in terminal
--- Replace `mvc` with your needed ASP.NET template (https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore2x)
--- Replace `App` with whatever you want to call your app
+	- Replace `mvc` with your needed ASP.NET template (https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore2x)
+	- Replace `App` with whatever you want to call your app
 4. Now you will have a somthing like this ./src/App/[generated files]
 5. Move everything in /App folder to ./src folder -> ./src/[generated files] and delete the ./App folder, don't need it.
 6. Go to the root of the repository where the Dockerfiles are and run `docker-compose up --build`
--- Once completed, your site is now accessable on http://localhost:8000 hosted inside docker
+	- Once completed, your site is now accessable on http://localhost:8000 hosted inside docker
 6. Now to setup the debugger: Open the project in VSCode
--- You can do a `dotnet restore` from your host terminal inside the ./src folder, will fix the broken intellisense
+	- You can do a `dotnet restore` from your host terminal inside the ./src folder, will fix the broken intellisense
 7. Open .vscode/launch.json
--- Replace `"program": "/app/[ENTER APP NAME HERE].dll"` with your app's name "App.dll" example.
+	- Replace `"program": "/app/[ENTER APP NAME HERE].dll"` with your app's name "App.dll" example.
 8. Open .vscode/tasks.json
--- Replace both `"${workspaceRoot}/src/[ENTER APP NAME HERE].csproj"` with your app's name "App.csproj" example.
+	- Replace both `"${workspaceRoot}/src/[ENTER APP NAME HERE].csproj"` with your app's name "App.csproj" example.
 
 That's it! Now go into ./src/Controllers And set a breakpoint in one of the actions you want to hit, and press F5. The debugger should spin put and let you debug inside of Docker.
 
