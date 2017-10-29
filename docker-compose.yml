@@ -1,0 +1,39 @@
+version: "3"
+services:
+    web:
+        build: .
+        container_name: aspnetcore
+        volumes:
+            - ./src:/app
+            # There was a conflict with nuget packages being loaded on host machine
+            # And the ones on docker had a difference location, this was breaking
+            # The intellisense in VSCode or breaking the build if VSCode intellisense worked
+            # Thats why we are loading an empty /obj directory here
+            - /app/obj/
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "8000:80"
+        depends_on:
+            - db
+    webdbg:
+        build: 
+            context: .
+            dockerfile: Dockerfile.debug
+        container_name: aspnetcore_dbg
+        volumes:
+            - ./src/bin/Debug/netcoreapp2.0/publish:/app
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development            
+        ports:
+            - "5050:80"
+        depends_on:
+            - db            
+    db:
+        image: "microsoft/mssql-server-linux"
+        container_name: sqlserver
+        ports: 
+            - "1433:1433"
+        environment:
+            SA_PASSWORD: "qqq!!!111QQQ"
+            ACCEPT_EULA: "Y"
