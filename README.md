@@ -21,7 +21,7 @@ It basically creates 3 containers, one for development, one for debugging and on
 	- Replace `mvc` with your needed ASP.NET template (https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore2x)
 	- Replace `App` with whatever you want to call your app
 4. Now you will have a somthing like this ./src/App/[generated files]
-5. Move everything in /App folder to ./src folder -> ./src/[generated files] and delete the ./App folder, don't need it.
+5. Move everything (don't leave hidden files behind) in /App folder to ./src folder -> ./src/[generated files] and delete the ./App folder, don't need it.
 6. Go to the root of the repository where the Dockerfiles are and run `docker-compose up --build`
 	- Once completed, your site is now accessable on http://localhost:8000 hosted inside docker
 6. Now to setup the debugger: Open the project in VSCode
