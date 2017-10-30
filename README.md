@@ -17,18 +17,18 @@ It basically creates 3 containers, one for development, one for debugging and on
 ### How to use
 1. Clone the repository
 2. Open ./src folder in your terminal
-3. Create a new ASP.NET Core app inside ./src run `dotnet new mvc -n App` in terminal
+3. Rename ./src to what ever you want to call your application, I will call it "App" for this example
+4. Create a new ASP.NET Core app inside the renamed ./src folder run `dotnet new mvc` in terminal
 	- Replace `mvc` with your needed ASP.NET template (https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore2x)
-	- Replace `App` with whatever you want to call your app
-4. Now you will have a somthing like this ./src/App/[generated files]
-5. Move everything (don't leave hidden files behind) in /App folder to ./src folder -> ./src/[generated files] and delete the ./App folder, don't need it.
-6. Go to the root of the repository where the Dockerfiles are and run `docker-compose up --build`
+5. Now you will have a somthing like this ./App/[generated files]
+6. Rename ./App back to ./src
+7. Go to the root of the repository where the Dockerfiles are and run `docker-compose up --build`
 	- Once completed, your site is now accessable on http://localhost:8000 hosted inside docker
-6. Now to setup the debugger: Open the project in VSCode
+8. Now to setup the debugger: Open the project in VSCode
 	- You can do a `dotnet restore` from your host terminal inside the ./src folder, will fix the broken intellisense
-7. Open .vscode/launch.json
+9. Open .vscode/launch.json
 	- Replace `"program": "/app/[ENTER APP NAME HERE].dll"` with your app's name "App.dll" example.
-8. Open .vscode/tasks.json
+10. Open .vscode/tasks.json
 	- Replace both `"${workspaceRoot}/src/[ENTER APP NAME HERE].csproj"` with your app's name "App.csproj" example.
 
 That's it! Now go into ./src/Controllers And set a breakpoint in one of the actions you want to hit, and press F5. The debugger should spin put and let you debug inside of Docker, go to http://localhost:5050 and activate the code path for your breakpoint!
